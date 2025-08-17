@@ -6,17 +6,12 @@ app = Flask(__name__)
 
 API_KEY = "8bb2e5b3-d481-45fd-9f2f-bdc788754888"
 
-# CORS ve frontend dahil
-from flask_cors import CORS
-CORS(app)
-
-# Tek dosya içinde HTML frontend
 HTML_PAGE = """
 <!DOCTYPE html>
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
-<title>Pixeldrain Video Yükleyici</title>
+<title>Pixeldrain Video Yükle</title>
 <style>
 body { font-family:sans-serif; background:#121212; color:#fff; padding:20px; }
 input, button { padding:10px; margin:5px 0; }
@@ -63,7 +58,7 @@ async function upload() {
 </html>
 """
 
-@app.route("/")
+@app.route("/", methods=["GET"])
 def index():
     return render_template_string(HTML_PAGE)
 
